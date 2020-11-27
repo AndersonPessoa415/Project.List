@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junior Decisão Sistemas</title>
+  <link href="app.component.css" rel="stylesheet" />
+
+</head>
+
+<body>
+  <div id="Portal"> <s>
+      <h1>~ ~ Portal Do Aluno ~ ~</h1>
+    </s> </div>
+
+  <div id="icone"> <img src="assets/logo.jpg" alt=""> </div>
+  <nav class="sidebar">
+    <ul>
+      <li>
+        <input type="radio" name="tabs" class="rb_tabs" id="tab1">
+        <label for="tab1"> Tarefas</label>
+        <div id="tab1" class="contents">
+          <article>
+            <div id="Anexos"></div>
+            <div>
+              <ul class="list-groups">
+                <li *ngFor="let lista of listas" class="list-group-item"> {{lista}} --
+                  <input type="radio" name="tabs" ngModel required class="rb_tabs" id="tab1">
+                  <button (click)="removeLista(lista)" class="btn btn-danger">remover</button>
+                  <button class="btn btn-secondary" >Editar</button>
+                  <mat-checkbox class="example-section"> </mat-checkbox>
+                </li>
+
+              </ul>
+
+              <div class="form-groups">
+                {{lista}}
+                <input type="text" [(ngModel)]="lista" formControl placeholder="Adicione sua Lista">
+                <button (click)="addLista()" class="btn btn-primary">Adicionar Lista</button>
+
+              </div>
+            </div>
+          </article>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" class="rb_tabs" id="tab2">
+        <label for="tab2"> Avisos</label>
+        <div id="tab2" class="content">
+          <article>
+            Aviso : Você foi avisado! Registre tudo para não esquecer nada!!
+          </article>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" class="rb_tabs" id="tab3">
+        <label for="tab3"> Contato</label>
+        <div id="tab3" class="content">
+          <article>
+            <h2>Entre Em Contato</h2>
+            <form class="field" method="POST" action="./email.php">
+              <input class="field" name="nome" placeholder="Nome">
+              <input class="field" name="email" placeholder="E-mail">
+              <textarea class="field" name="mensagem" placeholder="Digite sua mensagem."></textarea>
+              <input class="button" type="submit" value="Enviar">
+              <p>Não prometo responder...ou melhor receber</p>
+            </form>
+          </article>
+        </div>
+      </li>
+      <li>
+        <input type="radio" name="tabs" class="rb_tabs" id="tab4" checked>
+        <h4 for="tab4"> </h4>
+        <div class="content" id="tab4">
+          <article>
+            Sejam Bem Vindo!
+          </article>
+        </div>
+    </ul>
+    <router-outlet></router-outlet>
